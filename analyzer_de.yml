@@ -4,3 +4,73 @@ models:
     model_name: en_core_web_lg
   - lang_code: de
     model_name: de_core_news_md
+
+# Recognizer-Konfiguration für deutsche PII
+recognizers:
+  # Personen, Orte, Organisationen (durch Spacy NLP)
+  - name: SpacyRecognizer
+    supported_language: de
+    supported_entities:
+      - PERSON
+      - LOCATION
+      - ORGANIZATION
+
+  # Email-Adressen
+  - name: EmailRecognizer
+    supported_language: de
+    supported_entities:
+      - EMAIL_ADDRESS
+
+  # Deutsche Telefonnummern (Custom Pattern)
+  - name: PatternRecognizer
+    supported_language: de
+    supported_entities:
+      - DE_PHONE_NUMBER
+    patterns:
+      - name: german_phone_simple
+        regex: '\b0\d{9,11}\b'
+        score: 0.6
+      - name: german_phone_formatted
+        regex: '\b0\d{2,5}[\s\-/]?\d{3,9}\b'
+        score: 0.5
+      - name: german_phone_international
+        regex: '\b(?:\+49|0049)\s?\d{2,5}[\s\-/]?\d{3,9}\b'
+        score: 0.7
+    context:
+      - telefon
+      - tel
+      - phone
+      - mobile
+      - handy
+      - rufnummer
+      - fon
+
+  # IBAN (Bankverbindungen)
+  - name: IbanRecognizer
+    supported_language: de
+    supported_entities:
+      - IBAN_CODE
+
+  # Datum und Zeit
+  - name: DateRecognizer
+    supported_language: de
+    supported_entities:
+      - DATE_TIME
+
+  # IP-Adressen
+  - name: IpRecognizer
+    supported_language: de
+    supported_entities:
+      - IP_ADDRESS
+
+  # URLs
+  - name: UrlRecognizer
+    supported_language: de
+    supported_entities:
+      - URL
+
+  # Kreditkarten (falls benötigt)
+  - name: CreditCardRecognizer
+    supported_language: de
+    supported_entities:
+      - CREDIT_CARD
