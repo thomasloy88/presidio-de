@@ -20,6 +20,32 @@
     - language: en
       context: [phone, tel, telephone, mobile]
 
+# Custom PatternRecognizer für deutsche Telefonnummern (10-12 Ziffern)
+- name: PatternRecognizer
+  type: predefined
+  supported_languages:
+    - language: de
+  supported_entities:
+    - PHONE_NUMBER
+  patterns:
+    - name: de_phone_complete
+      regex: '\b0\d{9,11}\b'
+      score: 0.8
+    - name: de_phone_formatted
+      regex: '\b0\d{2,5}[\s\-/]\d{3,9}\b'
+      score: 0.7
+    - name: de_phone_international
+      regex: '\b(?:\+49|0049)[\s]?\d{2,5}[\s\-/]?\d{3,9}\b'
+      score: 0.8
+  context:
+    - telefonnummer
+    - telefon
+    - tel
+    - phone
+    - handy
+    - mobile
+    - nummer
+
 - name: IbanRecognizer
   type: predefined
   supported_languages:
