@@ -1,9 +1,11 @@
 - name: SpacyRecognizer
+  type: predefined
   supported_languages:
     - language: de
     - language: en
 
 - name: EmailRecognizer
+  type: predefined
   supported_languages:
     - language: de
       context: [email, e-mail, mail]
@@ -11,6 +13,7 @@
       context: [email, e-mail, mail]
 
 - name: PhoneRecognizer
+  type: predefined
   supported_languages:
     - language: de
       context: [telefon, tel, phone, handy, mobile, rufnummer]
@@ -18,26 +21,31 @@
       context: [phone, tel, telephone, mobile]
 
 - name: IbanRecognizer
+  type: predefined
   supported_languages:
     - language: de
     - language: en
 
 - name: DateRecognizer
+  type: predefined
   supported_languages:
     - language: de
     - language: en
 
 - name: IpRecognizer
+  type: predefined
   supported_languages:
     - language: de
     - language: en
 
 - name: UrlRecognizer
+  type: predefined
   supported_languages:
     - language: de
     - language: en
 
 - name: CryptoRecognizer
+  type: predefined
   supported_languages:
     - language: de
     - language: en
