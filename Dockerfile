@@ -11,20 +11,9 @@ COPY conf/default.yaml /usr/bin/presidio_analyzer/conf/default.yaml
 # Kopiere die Recognizer-Konfiguration
 COPY conf/default_recognizers.yaml /usr/bin/presidio_analyzer/conf/default_recognizers.yaml
 
-# DEBUG: Teste YAML-Parsing und zeige den Fehler
-RUN python3 << 'EOF'
-import yaml
-import traceback
-try:
-    with open('/usr/bin/presidio_analyzer/conf/default_recognizers.yaml', 'r') as f:
-        data = yaml.safe_load(f)
-        print(f"✅ YAML is valid! Loaded {len(data)} recognizers")
-        for i, rec in enumerate(data):
-            print(f"  {i+1}. {rec.get('name', 'UNKNOWN')}")
-except Exception as e:
-    print(f"❌ YAML ERROR: {e}")
-    traceback.print_exc()
-    exit(1)
-EOF
+# DEBUG: Zeige Datei und validiere
+RUN cat /usr/bin/presidio_analyzer/conf/default_recognizers.yaml && \
+    python3 -c "import yaml; yaml.safe_load(open('/usr/bin/presidio_analyzer/conf/default_recognizers.yaml'))" && \
+    echo "YAML validation passed!"
 
 EXPOSE 5001
