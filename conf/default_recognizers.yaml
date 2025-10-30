@@ -1,5 +1,43 @@
+- name: SpacyRecognizer
+  supported_languages:
+    - language: de
+    - language: en
+
 - name: EmailRecognizer
-  supported_language: de
+  supported_languages:
+    - language: de
+      context: [email, e-mail, mail]
+    - language: en
+      context: [email, e-mail, mail]
 
 - name: PhoneRecognizer
-  supported_language: de
+  supported_languages:
+    - language: de
+      context: [telefon, tel, phone, handy, mobile, rufnummer]
+    - language: en
+      context: [phone, tel, telephone, mobile]
+
+- name: IbanRecognizer
+  supported_languages:
+    - language: de
+    - language: en
+
+- name: DateRecognizer
+  supported_languages:
+    - language: de
+    - language: en
+
+- name: IpRecognizer
+  supported_languages:
+    - language: de
+    - language: en
+
+- name: UrlRecognizer
+  supported_languages:
+    - language: de
+    - language: en
+
+- name: CryptoRecognizer
+  supported_languages:
+    - language: de
+    - language: en
