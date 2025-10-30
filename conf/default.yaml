@@ -1,6 +1,33 @@
 nlp_engine_name: spacy
+
 models:
   - lang_code: en
     model_name: en_core_web_lg
   - lang_code: de
     model_name: de_core_news_md
+
+ner_model_configuration:
+  model_to_presidio_entity_mapping:
+    # Englische Entitäten (spaCy en)
+    PER: PERSON
+    PERSON: PERSON
+    LOC: LOCATION
+    LOCATION: LOCATION
+    GPE: LOCATION
+    ORG: ORGANIZATION
+    ORGANIZATION: ORGANIZATION
+    DATE: DATE_TIME
+    TIME: DATE_TIME
+    # Deutsche Entitäten (spaCy de)
+    PER: PERSON
+    LOC: LOCATION
+    ORG: ORGANIZATION
+    MISC: NRP
+    
+  low_confidence_score_multiplier: 0.4
+  
+  low_score_entity_names:
+    - ORGANIZATION
+    - ORG
+    
+  default_score: 0.85
